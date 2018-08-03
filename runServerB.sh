@@ -1,2 +1,2 @@
 #!/bin/sh
-java -jar wan-cluster-b/target/bootcamp-lab5-wan-cluster-b.jar
+java -classpath target/hazelcast-wan-training-1.0-SNAPSHOT.jar:target/lib/* com.hazelcast.training.wan.WanReplicationClusterB
