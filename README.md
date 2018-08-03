@@ -39,7 +39,7 @@ Shutdown everything - all servers from both clusters and all clients. Configure 
 To make it more interesting, configure bi-directional WAN Replication and ensure that both clusters receive updates from each other.
 
 
-### Source
+### Reference
 
 WAN Replication documentation http://docs.hazelcast.org/docs/3.10.4/manual/html-single/index.html#wan
 
