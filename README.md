@@ -22,12 +22,13 @@ This project programmatically configures Hazelcast properties using Hazelcast AP
 
 ## Demo
 
-* Run 2 members in Cluster A by executing `runServerA.sh` twice.
-* Run 2 members in Cluster B by executing `runServerB.sh` twice.
-* Run 1st instance of client by executing `runClient.sh` once. Follow the instructions on the screen to connect and send data into Cluster A.
-* Run 2nd instance of client by executing `runClient.sh` again and follow the instructions to connect to Cluster B. This time, try to query the data that was sent from Cluster A.
+* Build the project using `mvn clean package -DskipTests`
+* Run 2 members in Cluster A by executing `runServerA.sh` twice
+* Run 2 members in Cluster B by executing `runServerB.sh` twice
+* Run 1st instance of client by executing `runClient.sh` once. Follow the instructions on the screen to connect and send data into Cluster A
+* Run 2nd instance of client by executing `runClient.sh` again and follow the instructions to connect to Cluster B. This time, try to query the data that was sent from Cluster A
 
-After the first run, Cluster A's updates will not be found in Cluster B. 
+After the first run, Cluster A's updates will not be found in Cluster B 
 
 Shutdown everything - all servers from both clusters and all clients. Configure WAN Replication (uni-directional at this stage), repeat the above process and ensure that Cluster B receives updates from Cluster A.
 
