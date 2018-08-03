@@ -20,8 +20,11 @@ This project programmatically configures Hazelcast properties using Hazelcast AP
 `runServerB.sh` starts one member of Cluster B
 
 
+> **NOTE:** *This demo uses Enterprise features, therefore you need a license key to run this demo.*
+
 ## Demo
 
+* Insert the license key at [*LicenseUtil*](https://github.com/wildnez/hazelcast-wan-training/blob/master/src/main/java/com/hazelcast/training/wan/util/LicenseUtil.java)
 * Build the project using `mvn clean package -DskipTests`
 * Run 2 members in Cluster A by executing `runServerA.sh` twice
 * Run 2 members in Cluster B by executing `runServerB.sh` twice
