@@ -20,7 +20,8 @@ This project programmatically configures Hazelcast properties using Hazelcast AP
 `runServerB.sh` starts one member of Cluster B
 
 
-> **NOTE:** *This demo uses Enterprise features, therefore you need a license key to run this demo.*
+> **_NOTE: This demo uses Enterprise features, therefore you need a license key to run_**
+
 
 ## Demo
 
