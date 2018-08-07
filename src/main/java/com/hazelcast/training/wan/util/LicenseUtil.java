@@ -6,3 +6,5 @@ package com.hazelcast.training.wan.util;
 public interface LicenseUtil {
     String KEY = "";
 }
+
+//ENTERPRISE_HD#6Nodes#0FuKUENyAJV5wm7TOIlb6fH1kSjra5591096001511109001101808110101
