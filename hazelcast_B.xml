@@ -1,16 +1,20 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<hazelcast xsi:schemaLocation="http://www.hazelcast.com/schema/config hazelcast-config-3.10.xsd"
-           xmlns="http://www.hazelcast.com/schema/config"
-           xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+<hazelcast xmlns="http://www.hazelcast.com/schema/config"
+           xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+           xsi:schemaLocation="http://www.hazelcast.com/schema/config
+           http://www.hazelcast.com/schema/config/hazelcast-config-3.12.xsd">
 
-  <import resource="../training-corporate-new/member-license-key.xml"/>
+  <license-key>YOUR LICENSE HERE</license-key>
 
   <!-- WAN replication requires a cluster group name be used -->
-
-  <!-- to make sure your 2 clusters are separate you will need to provide a non-default port for one cluster -->
+  <group>
+    <name>B</name>
+  </group>
 
 
   <network>
+    <!-- to make sure your 2 clusters are separate run this cluster on port 5801,2,3,... -->
+
     <join>
       <!-- For trainings everyone should create his/her own cluster, therefore
       multicast is disabled and other nodes are only searched for on localhost -->
