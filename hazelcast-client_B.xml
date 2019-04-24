@@ -1,0 +1,18 @@
+<hazelcast-client xsi:schemaLocation="http://www.hazelcast.com/schema/client-config/hazelcast-client-config-3.12.xsd"
+                  xmlns="http://www.hazelcast.com/schema/client-config"
+                  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+
+
+  <group>
+    <name>B</name>
+  </group>
+
+  <network>
+    <cluster-members>
+      <address>127.0.0.1:5801</address>
+      <address>127.0.0.1:5802</address>
+      <address>127.0.0.1:5803</address>
+    </cluster-members>
+  </network>
+
+</hazelcast-client>
