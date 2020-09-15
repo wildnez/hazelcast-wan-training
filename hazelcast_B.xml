@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<hazelcast xmlns="http://www.hazelcast.com/schema/config"
+           xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+           xsi:schemaLocation="http://www.hazelcast.com/schema/config
+           http://www.hazelcast.com/schema/config/hazelcast-config-3.12.xsd">
+
+  <license-key>YOUR LICENSE HERE</license-key>
+
+  <!-- WAN replication requires a cluster group name be used -->
+  <group>
+    <name>B</name>
+  </group>
+
+
+  <network>
+    <!-- to make sure your 2 clusters are separate run this cluster on port 5801,2,3,... -->
+
+    <join>
+      <!-- For trainings everyone should create his/her own cluster, therefore
+      multicast is disabled and other nodes are only searched for on localhost -->
+      <multicast enabled="false"/>
+      <tcp-ip enabled="true">
+        <interface>127.0.0.1</interface>
+      </tcp-ip>
+    </join>
+  </network>
+
+  <wan-replication name="to_A">
+    <!-- configure WAN replication -->
+  </wan-replication>
+
+  <map name="WAN_MAP">
+    <!-- Configure the map to use the right WAN replication config and your chosen merge policy -->
+  </map>
+
+  <!-- Configure statistics to be sent to Management Center -->
+  <management-center enabled="true">http://localhost:8080/hazelcast-mancenter</management-center>
+
+
+</hazelcast>

@@ -48,7 +48,11 @@
         <dependency>
             <groupId>com.hazelcast</groupId>
             <artifactId>hazelcast-enterprise-all</artifactId>
+<<<<<<< HEAD
             <version>4.0.2</version>
+=======
+            <version>3.12</version>
+>>>>>>> 8ac2f8d7803c45a2fd055149f9bc711fa7dbcaec
         </dependency>
     </dependencies>
 

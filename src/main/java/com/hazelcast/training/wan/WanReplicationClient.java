@@ -1,11 +1,15 @@
 package com.hazelcast.training.wan;
 
 import com.hazelcast.client.HazelcastClient;
+import com.hazelcast.client.config.ClientClasspathXmlConfig;
 import com.hazelcast.client.config.ClientConfig;
+import com.hazelcast.config.FileSystemXmlConfig;
+import com.hazelcast.config.InvalidConfigurationException;
 import com.hazelcast.core.HazelcastInstance;
 import com.hazelcast.map.IMap;
 import com.hazelcast.training.wan.util.LicenseUtil;
 
+import java.io.FileNotFoundException;
 import java.util.Scanner;
 import java.util.concurrent.TimeUnit;
 
@@ -29,7 +33,6 @@ public class WanReplicationClient {
         System.out.println("Write \"Help\" for the list of available commands:");
         Scanner reader = new Scanner(System.in);
         while (true) {
-            sleepMillis(100);
             System.out.print("Command: ");
             String command = reader.nextLine().toLowerCase();
 
@@ -38,20 +41,10 @@ public class WanReplicationClient {
             }
 
             if (command.equalsIgnoreCase("connect_cluster_a")) {
-                if (isClientConnected()) {
-                    System.out.println("Wrong command, Client is already connected.");
-                    printAvailableCommands();
-                    continue;
-                }
                 connectClusterAandInitialize();
             }
 
             if (command.equalsIgnoreCase("connect_cluster_b")) {
-                if (isClientConnected()) {
-                    System.out.println("Wrong command, Client is already connected.");
-                    printAvailableCommands();
-                    continue;
-                }
                 connectClusterBandInitialize();
             }
 
@@ -87,19 +80,45 @@ public class WanReplicationClient {
         System.out.println("Reading value for key: " + key + "  Value: " + MAP.get(key));
     }
 
+<<<<<<< HEAD
     private static void connectClusterBandInitialize() {
         ClientConfig config = new ClientConfig();
         config.getNetworkConfig().addAddress("127.0.0.1:5801");
         config.setClusterName("ClusterB-Name");
+=======
 
-        HAZELCAST = HazelcastClient.newHazelcastClient(config);
-        MAP = HAZELCAST.getMap("WAN_MAP");
+    private static void connectClusterAandInitialize() {
+        connectandInitialize("hazelcast-client_A.xml");
+    }
+>>>>>>> 8ac2f8d7803c45a2fd055149f9bc711fa7dbcaec
+
+    private static void connectClusterBandInitialize() {
+        connectandInitialize("hazelcast-client_B.xml");
     }
 
+<<<<<<< HEAD
     private static void connectClusterAandInitialize() {
         ClientConfig config = new ClientConfig();
         config.getNetworkConfig().addAddress("127.0.0.1:5701");
         config.setClusterName("ClusterA-Name");
+=======
+    private static void connectandInitialize(String configFile) {
+        if (HAZELCAST != null) {
+            HAZELCAST.shutdown();
+            HAZELCAST = null;
+        }
+
+        ClientConfig config;
+        try {
+            config = new ClientClasspathXmlConfig(configFile);
+        } catch (IllegalArgumentException e) {
+            System.out.println("Connect Failed.  Could not find " + configFile);
+            return;
+        } catch(InvalidConfigurationException ic){
+            System.out.println("Connect Failed.  " + configFile + " contains invalid configuration");
+            return;
+        }
+>>>>>>> 8ac2f8d7803c45a2fd055149f9bc711fa7dbcaec
 
         HAZELCAST = HazelcastClient.newHazelcastClient(config);
         MAP = HAZELCAST.getMap("WAN_MAP");
@@ -118,11 +137,5 @@ public class WanReplicationClient {
         return HAZELCAST != null && HAZELCAST.getCluster() != null;
     }
 
-    private static void sleepMillis(long duration) {
-        try {
-            TimeUnit.MILLISECONDS.sleep(duration);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
-    }
+
 }
