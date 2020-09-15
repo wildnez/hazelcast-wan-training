@@ -9,10 +9,6 @@
     <version>1.0-SNAPSHOT</version>
     <repositories>
         <repository>
-            <id>Hazelcast Private Snapshot Repository</id>
-            <url>https://repository-hazelcast-l337.forge.cloudbees.com/snapshot/</url>
-        </repository>
-        <repository>
             <id>Hazelcast Private Release Repository</id>
             <url>https://repository-hazelcast-l337.forge.cloudbees.com/release/</url>
         </repository>
@@ -52,7 +48,7 @@
         <dependency>
             <groupId>com.hazelcast</groupId>
             <artifactId>hazelcast-enterprise-all</artifactId>
-            <version>3.10.3</version>
+            <version>4.0.2</version>
         </dependency>
     </dependencies>
 

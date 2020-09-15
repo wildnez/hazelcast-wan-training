@@ -3,7 +3,7 @@ package com.hazelcast.training.wan;
 import com.hazelcast.client.HazelcastClient;
 import com.hazelcast.client.config.ClientConfig;
 import com.hazelcast.core.HazelcastInstance;
-import com.hazelcast.core.IMap;
+import com.hazelcast.map.IMap;
 import com.hazelcast.training.wan.util.LicenseUtil;
 
 import java.util.Scanner;
@@ -90,10 +90,7 @@ public class WanReplicationClient {
     private static void connectClusterBandInitialize() {
         ClientConfig config = new ClientConfig();
         config.getNetworkConfig().addAddress("127.0.0.1:5801");
-        config.getGroupConfig().setName("ClusterB-Name");
-        config.getGroupConfig().setPassword("ClusterB-Pass");
-
-        config.setLicenseKey(LicenseUtil.KEY);
+        config.setClusterName("ClusterB-Name");
 
         HAZELCAST = HazelcastClient.newHazelcastClient(config);
         MAP = HAZELCAST.getMap("WAN_MAP");
@@ -102,10 +99,7 @@ public class WanReplicationClient {
     private static void connectClusterAandInitialize() {
         ClientConfig config = new ClientConfig();
         config.getNetworkConfig().addAddress("127.0.0.1:5701");
-        config.getGroupConfig().setName("ClusterA-Name");
-        config.getGroupConfig().setPassword("ClusterA-Pass");
-
-        config.setLicenseKey(LicenseUtil.KEY);
+        config.setClusterName("ClusterA-Name");
 
         HAZELCAST = HazelcastClient.newHazelcastClient(config);
         MAP = HAZELCAST.getMap("WAN_MAP");

@@ -1,7 +1,6 @@
 package com.hazelcast.training.wan;
 
 import com.hazelcast.config.Config;
-import com.hazelcast.config.GroupConfig;
 import com.hazelcast.config.MapConfig;
 import com.hazelcast.core.Hazelcast;
 import com.hazelcast.training.wan.util.LicenseUtil;
@@ -17,14 +16,9 @@ public class WanReplicationClusterB {
         config.getNetworkConfig().getJoin().getTcpIpConfig().setEnabled(true);
         config.getNetworkConfig().setPort(5801).setPortAutoIncrement(true).setPortCount(20);
         config.getNetworkConfig().getJoin().getTcpIpConfig().addMember("127.0.0.1");
-
-        GroupConfig groupConfig = new GroupConfig();
-        groupConfig.setName("ClusterB-Name");
-        groupConfig.setPassword("ClusterB-Pass");
-        config.setGroupConfig(groupConfig);
+        config.setClusterName("ClusterB-Name");
 
         config.addMapConfig(buildMapConfig());
-
         Hazelcast.newHazelcastInstance(config);
     }
 
